@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="experience_img_size">50dp</dimen>
+    <dimen name="experience_view_margin_vertical">10dp</dimen>
+    <dimen name="experience_view_margin_horizontal">16dp</dimen>
+    <dimen name="skill_item_horizontal_margin">20dp</dimen>
+    <dimen name="main_content_margin_bottom">20dp</dimen>
+    <dimen name="name_text_size">30sp</dimen>
+    <dimen name="summery_text_size">20sp</dimen>
+</resources>
