@@ -28,7 +28,7 @@ class ResponseConverter {
                 ExperienceUIModel(
                     it.companyName, it.roleName,
                     it.startDate, it.endDate,
-                    it.companyLogo, it.responsibilities
+                    it.companyLogo
                 )
             )
         }

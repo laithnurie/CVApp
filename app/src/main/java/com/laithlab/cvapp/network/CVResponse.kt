@@ -19,6 +19,5 @@ data class ExperienceResponse(
     @SerializedName("role") val roleName: String,
     @SerializedName("start_date") val startDate: String,
     @SerializedName("end_date") val endDate: String,
-    @SerializedName("company_logo") val companyLogo: String,
-    @SerializedName("responsibilities") val responsibilities: ArrayList<String>
+    @SerializedName("company_logo") val companyLogo: String
 )

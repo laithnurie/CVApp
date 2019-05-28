@@ -30,8 +30,6 @@ class MainModule {
         return CVRepo(cvAPI, converter)
     }
 
-
-
     @Provides
     @Singleton
     internal fun provideCVApi(builder: Retrofit.Builder): CVAPI {

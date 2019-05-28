@@ -14,6 +14,5 @@ data class ExperienceUIModel(
     val roleName: String,
     val startDate: String,
     val endDate: String,
-    val companyLogo: String,
-    val responsibilities: ArrayList<String>
+    val companyLogo: String
 )
