@@ -6,9 +6,12 @@ Run
 ./gradlew testDebugUnitTestCoverage to run the unit tests and produce the coverage report
 
 you can open the html with the following commands :
+
 open ./app/build/reports/jacoco/testDebugUnitTestCoverage/html/index.html
 
-Json used to populate the data https://gist.githubusercontent.com/laithnurie/4543f02da001c483186f2a2c53645b89/raw/e90952d518c0b7b14b2edeb7144d0adb1404e3e8/laith_cv.json
+Json used to populate the data:
+
+https://gist.githubusercontent.com/laithnurie/4543f02da001c483186f2a2c53645b89/raw/e90952d518c0b7b14b2edeb7144d0adb1404e3e8/laith_cv.json
 
 Project details:
 
