@@ -5,8 +5,8 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager.HORIZONTAL
+import com.laithlab.cvapp.App
 import com.laithlab.cvapp.R
-import com.laithlab.cvapp.di.DaggerMainComponent
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        DaggerMainComponent.create().inject(this)
+        (application as App).mainComponent.inject(this)
 
         skills_list.layoutManager = LinearLayoutManager(this, HORIZONTAL, false)
         experiences_list.layoutManager = LinearLayoutManager(this)
