@@ -28,6 +28,10 @@ class MainActivity : AppCompatActivity() {
         skills_list.layoutManager = LinearLayoutManager(this, HORIZONTAL, false)
         experiences_list.layoutManager = LinearLayoutManager(this)
 
+    }
+
+    override fun onResume() {
+        super.onResume()
         disposables.add(
             viewModel.getCV()
                 .subscribeOn(Schedulers.io())
