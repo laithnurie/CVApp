@@ -22,7 +22,7 @@ project.afterEvaluate {
             '**/R.class',
             '**/R$*.class',
             '**/*Application.class',
-            '**/*MoviesApp.class',
+            '**/*App.class',
             '**/*Activity.class',
             '**/*Activity$*.class',
             '**/*Activity*Companion.class',

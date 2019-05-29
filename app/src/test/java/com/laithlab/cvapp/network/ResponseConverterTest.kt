@@ -1,10 +1,9 @@
 package com.laithlab.cvapp.network
 
+import com.laithlab.cvapp.TestHelper
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
-import org.mockito.Mockito.`when`
-import org.mockito.Mockito.mock
 
 class ResponseConverterTest {
 
@@ -17,34 +16,7 @@ class ResponseConverterTest {
 
     @Test
     fun convertValidResponse() {
-
-        val skills = ArrayList<SkillResponse>()
-        for (i in 0..3) {
-            val skillResponse = mock(SkillResponse::class.java)
-            `when`(skillResponse.name).thenReturn("skill no:$i")
-            `when`(skillResponse.level).thenReturn(i)
-            skills.add(skillResponse)
-        }
-
-        val experiences = ArrayList<ExperienceResponse>()
-        for (i in 0..4) {
-            val experienceResponse = mock(ExperienceResponse::class.java)
-            `when`(experienceResponse.companyName).thenReturn("companyName $i")
-            `when`(experienceResponse.companyLogo).thenReturn("companyLogo $i")
-            `when`(experienceResponse.roleName).thenReturn("roleName $i")
-            `when`(experienceResponse.startDate).thenReturn("startDate $i")
-            `when`(experienceResponse.endDate).thenReturn("endDate $i")
-            experiences.add(experienceResponse)
-        }
-
-        val cvResponse = mock(CVResponse::class.java)
-
-        `when`(cvResponse.skills).thenReturn(skills)
-        `when`(cvResponse.experiences).thenReturn(experiences)
-
-        `when`(cvResponse.name).thenReturn("Jon Snow")
-        `when`(cvResponse.summery).thenReturn("He knows nothing")
-
+        val cvResponse = TestHelper.getMockedResponse()
         val uiModel = responseConverter.getUIModelFromResponse(cvResponse)
 
         assertEquals(uiModel.experiences.size, 5)
