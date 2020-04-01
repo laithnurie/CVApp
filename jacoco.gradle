@@ -46,24 +46,19 @@ project.afterEvaluate {
             '**/*View$*.class',
             '**/*_*',
     ]
-
     // When no product flavors defined, use empty
     if (!productFlavors)
         productFlavors.add('')
-
     productFlavors.each { productFlavorName ->
         buildTypes.each { buildTypeName ->
             def sourceName, sourcePath
-
             if (!productFlavorName) {
                 sourceName = sourcePath = "${buildTypeName}"
             } else {
                 sourceName = "${productFlavorName}${buildTypeName.capitalize()}"
                 sourcePath = "${productFlavorName}/${buildTypeName}"
             }
-
             def testTaskName = "test${sourceName.capitalize()}UnitTest"
-
             def coverageSourceDirs = [
                     "src/main/java",
                     "src/$productFlavorName/java",
@@ -71,7 +66,6 @@ project.afterEvaluate {
                     "src/$productFlavorName/kotlin",
                     "src/$buildTypeName/kotlin"
             ]
-
             def classDirs = fileTree(
                     dir: "${project.buildDir}/intermediates/classes/${sourcePath}",
                     excludes: excludes
@@ -81,30 +75,25 @@ project.afterEvaluate {
             )
             def sourceDirs = files(coverageSourceDirs)
             def execData = files("${project.buildDir}/jacoco/${testTaskName}.exec")
-
             // Create coverage task of form 'testFlavorTypeCoverage' depending on 'testFlavorTypeUnitTest'
             task "${testTaskName}Coverage"(type: JacocoReport, dependsOn: "$testTaskName") {
                 group = "Reporting"
                 description = "Generate Jacoco coverage reports on the ${sourceName.capitalize()} build."
-                classDirectories = classDirs
-
-                additionalSourceDirs = sourceDirs
-                sourceDirectories = sourceDirs
-                executionData = execData
+                classDirectories.setFrom(classDirs)
+                additionalSourceDirs.setFrom(sourceDirs)
+                sourceDirectories.setFrom(sourceDirs)
+                executionData.setFrom(execData)
                 reports {
                     xml.enabled = true
                     html.enabled = true
                 }
             }
-
             task "${testTaskName}CoverageVerification" (type: JacocoCoverageVerification, dependsOn: "${testTaskName}Coverage") {
-                sourceDirectories = sourceDirs
-                classDirectories = classDirs
-                executionData = execData
-
+                sourceDirectories.setFrom(sourceDirs)
+                classDirectories.setFrom(classDirs)
+                executionData.setFrom(execData)
                 violationRules {
                     setFailOnViolation(true)
-
                     rule {
                         limit {
                             minimum = 0.18
